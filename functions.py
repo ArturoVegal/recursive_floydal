@@ -1,9 +1,27 @@
 import itertools
 
+def safe_floyd_warshall(graph):
+    """
+    This function is an iterative solution from geeksforgeeks
+    """
+    # Number of vertices
+    n = len(graph)
+    
+    # Initialize the distance matrix with the given graph
+    dist = list(map(lambda i: list(map(lambda j: j, i)), graph))
+    
+    # Floyd-Warshall algorithm
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                 dist[i][j] = min(dist[i][j],dist[i][k] + dist[k][j])
+    return dist
+
 def floyd(distance):
     """
-    A simple implementation of Floyd's algorithm
+    A simple iterative implementation of Floyd's algorithm
     """
+    MAX_LENGTH = len(distance)
     for intermediate, start_node, end_node in itertools.product(range(MAX_LENGTH), range(MAX_LENGTH), range(MAX_LENGTH)):
         # Assume that if start_node and end_node are the same then the distance would be zero
         if start_node == end_node:
@@ -15,19 +33,6 @@ def floyd(distance):
     # Print the final distance matrix
     # print(distance)
     return distance
-
-# Example usage:
-# Initialize the graph distance matrix
-MAX_LENGTH = 5  # Example value, replace with your actual value
-graph = [[0, 2, 5, float('inf'), float('inf')],
-         [float('inf'), 0, 7, 1, 8],
-         [float('inf'), float('inf'), 0, 4, float('inf')],
-         [float('inf'), float('inf'), float('inf'), 0, 3],
-         [float('inf'), float('inf'), 2, float('inf'), 0]]
-
-# Call the function with the graph matrix
-floyd(graph)
-
 
 # Recursive Floyd's algorithm exercise
 
@@ -62,12 +67,3 @@ def floyd2(distance):
             floydal_recursive(distance, 0, start_node, end_node, MAX_LENGTH)
     # Print the final distance matrix
     return distance
-
-# Example usage:
-graph = [[0, 2, 5, float('inf'), float('inf')],
-         [float('inf'), 0, 7, 1, 8],
-         [float('inf'), float('inf'), 0, 4, float('inf')],
-         [float('inf'), float('inf'), float('inf'), 0, 3],
-         [float('inf'), float('inf'), 2, float('inf'), 0]]
-
-# print (floyd2(graph))

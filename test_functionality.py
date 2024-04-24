@@ -1,19 +1,6 @@
 import unittest
-from main import floyd, floyd2
+from functions import floyd, floyd2, safe_floyd_warshall
 
-def safe_floyd_warshall(graph):
-    # Number of vertices
-    n = len(graph)
-    
-    # Initialize the distance matrix with the given graph
-    dist = list(map(lambda i: list(map(lambda j: j, i)), graph))
-    
-    # Floyd-Warshall algorithm
-    for k in range(n):
-        for i in range(n):
-            for j in range(n):
-                 dist[i][j] = min(dist[i][j],dist[i][k] + dist[k][j])
-    return dist
 
 class TestFloyd_Algo(unittest.TestCase):
     def test_iterative(self):
