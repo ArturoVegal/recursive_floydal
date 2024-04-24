@@ -13,7 +13,8 @@ def floyd(distance):
         distance[start_node][end_node] = min(distance[start_node][end_node],
                                               distance[start_node][intermediate] + distance[intermediate][end_node])
     # Print the final distance matrix
-    print(distance)
+    # print(distance)
+    return distance
 
 # Example usage:
 # Initialize the graph distance matrix
@@ -60,7 +61,7 @@ def floyd2(distance):
         for end_node in range(MAX_LENGTH):
             floydal_recursive(distance, 0, start_node, end_node, MAX_LENGTH)
     # Print the final distance matrix
-    print(distance)
+    return distance
 
 # Example usage:
 graph = [[0, 2, 5, float('inf'), float('inf')],
@@ -69,4 +70,4 @@ graph = [[0, 2, 5, float('inf'), float('inf')],
          [float('inf'), float('inf'), float('inf'), 0, 3],
          [float('inf'), float('inf'), 2, float('inf'), 0]]
 
-floyd2(graph)
+# print (floyd2(graph))
