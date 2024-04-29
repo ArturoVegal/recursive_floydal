@@ -2,9 +2,10 @@ import unittest
 from functions import floyd, floyd2, safe_floyd_warshall
 
 
-class TestFloyd_Algo(unittest.TestCase):
+class TestFloydAlgo(unittest.TestCase):
     def test_iterative(self):
         graph = [[0, 2, 5, float('inf'), float('inf')],
+                 
                 [float('inf'), 0, 7, 1, 8],
                 [float('inf'), float('inf'), 0, 4, float('inf')],
                 [float('inf'), float('inf'), float('inf'), 0, 3],
